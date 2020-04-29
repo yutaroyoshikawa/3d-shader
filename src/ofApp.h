@@ -24,5 +24,6 @@ class ofApp : public ofBaseApp{
   ofEasyCam camera;
   ofLight light;
   ofShader shader;
+  ofFbo fbo;
 		
 };

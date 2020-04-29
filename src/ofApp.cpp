@@ -7,19 +7,19 @@ void ofApp::setup(){
   
   light.enable();
   light.setSpotlight();
-  light.setPosition(0, 0, 0);
+  light.setPosition(-150, 150, 150);
   light.lookAt(ofVec3f(0, 0, 0));
   light.setAmbientColor(ofFloatColor(0.0, 0.0, 0.0));
-  light.setDiffuseColor(ofFloatColor(0.0, 0.0, 0.0));
+  light.setDiffuseColor(ofFloatColor(1.0, 1.0, 1.0));
+  
+  fbo.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+  fbo.begin();
+  ofClear(0, 0, 0);
   
-}
-
-//--------------------------------------------------------------
-void ofApp::draw(){
   ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
   
   camera.begin();
@@ -30,6 +30,12 @@ void ofApp::draw(){
   
   camera.end();
   ofPopMatrix();
+  fbo.end();
+}
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+  fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
   
 }
 
