@@ -5,6 +5,8 @@ void ofApp::setup(){
   ofEnableDepthTest();
   ofBackground(255, 255, 255);
   
+  shader.load("shader.vert", "shader.frag");
+  
   light.enable();
   light.setSpotlight();
   light.setPosition(-150, 150, 150);
@@ -35,8 +37,13 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-  fbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+  shader.begin();
+  shader.setUniformTexture("texture", fbo, 0);
+  shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+  shader.setUniform1f("time", ofGetElapsedTimef());
   
+  ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+  shader.end();
 }
 
 //--------------------------------------------------------------
