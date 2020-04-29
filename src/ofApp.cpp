@@ -2,17 +2,23 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+  ofEnableDepthTest();
+  
+  light.enable();
+  light.setSpotlight();
+  light.setPosition(0, 0, 0);
+  light.lookAt(ofVec3f(0, 0, 0));
+  light.setAmbientColor(ofFloatColor(0.0, 0.0, 0.0));
+  light.setDiffuseColor(ofFloatColor(0.0, 0.0, 0.0));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+  
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
 }
 
 //--------------------------------------------------------------
