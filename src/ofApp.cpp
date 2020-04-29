@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
   ofEnableDepthTest();
+  ofBackground(255, 255, 255);
   
   light.enable();
   light.setSpotlight();
@@ -19,6 +20,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+  ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+  
+  camera.begin();
+  
+  light.draw();
+  
+  ofDrawBox(0, 0, 0, 100, 100, 100);
+  
+  camera.end();
+  ofPopMatrix();
+  
 }
 
 //--------------------------------------------------------------
